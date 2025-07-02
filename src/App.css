@@ -1,5 +1,5 @@
 .App {
-  padding-top: 100px; /* Espacio para el navbar */
+  padding-top: 150px; /* Espacio para el navbar */
   min-height: 100vh;
 }
 /* Añade esto */
@@ -11,6 +11,6 @@ body {
 /* Para mobile */
 @media (max-width: 768px) {
   body {
-    padding-top: 60px; /* Altura del navbar en mobile */
+    padding-top: 130px; /* Altura del navbar en mobile */
   }
 }

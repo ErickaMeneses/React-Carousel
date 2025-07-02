@@ -42,6 +42,35 @@ export function Carousel() {
     document.body.style.userSelect = 'none';
   };
 
+  const handleTouchStart = (e: React.TouchEvent) => {
+    isDragging.current = true;
+    startX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    if (!isDragging.current || startX.current === null) return;
+
+    const deltaX = e.touches[0].clientX - startX.current;
+    const angleOffset = deltaX * 0.4;
+    setDragAngle(angleOffset);
+  };
+
+  const handleTouchEnd = () => {
+    isDragging.current = false;
+
+    const threshold = 30;
+    if (dragAngle > threshold) {
+      setActiveIndex((prev) => (prev - 1 + images.length) % images.length);
+      setRotation((prev) => prev - degreesPerItem);
+    } else if (dragAngle < -threshold) {
+      setActiveIndex((prev) => (prev + 1) % images.length);
+      setRotation((prev) => prev + degreesPerItem);
+    }
+
+    setDragAngle(0);
+    startX.current = null;
+  };
+
   const handleMouseMove = (e: React.MouseEvent) => {
     if (!isDragging.current || startX.current === null) return;
 
@@ -78,6 +107,9 @@ export function Carousel() {
       onMouseMove={handleMouseMove}
       onMouseUp={handleMouseUp}
       onMouseLeave={handleMouseUp}
+      onTouchStart={handleTouchStart}
+      onTouchMove={handleTouchMove}
+      onTouchEnd={handleTouchEnd}
     >
       <img
         src={wheel}
