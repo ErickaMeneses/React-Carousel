@@ -1,0 +1,84 @@
+.carousel-container {
+  position: relative;
+  width: 80vw;
+  max-width: 600px;
+  aspect-ratio: 1 / 1;
+  margin: auto;
+  overflow: visible;
+  user-select: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+}
+
+.wheel {
+  position: absolute;
+  width: 50%;
+  height: 50%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto; /* Centrado automático en todas direcciones */
+  transform: rotate(0deg); /* Solo rotación, sin translate */
+  transition: transform 0.4s ease;
+  z-index: 2;
+  transform-origin: center center;
+  pointer-events: none; /* Evita que interfiera con los clicks */
+}
+
+.carousel-item {
+  position: absolute;
+  width: 23%;
+  height: 20%;
+  transition:
+    transform 0.6s ease,
+    width 0.6s ease,
+    height 0.6s ease,
+    z-index 0.6s ease;
+  text-align: center;
+  pointer-events: auto;
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.carousel-item img {
+  width: 100%;
+  height: auto;
+  max-height: 70%; /* Altura máxima para imágenes normales */
+  object-fit: contain;
+  border-radius: 6px;
+  pointer-events: none;
+  transition: 
+    border 0.4s ease,
+    box-shadow 0.4s ease,
+    max-height 0.6s ease; /* Añadimos transición para max-height */
+}
+
+.carousel-item p {
+  margin: 3px 0 0;
+  font-size: 0.8rem;
+  color: #333;
+  font-weight: 500;
+}
+
+.carousel-item.active {
+  width: 40%;
+  height: 35%;
+  z-index: 10;
+  pointer-events: auto;
+}
+
+.carousel-item.active img {
+  border: 2px solid white;
+  box-shadow: 0 6px 20px rgba(255, 255, 255, 0.3);
+  max-height: 85%; /* Aumentamos la altura máxima para la imagen activa */
+}

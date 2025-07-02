@@ -1,0 +1,183 @@
+/* ESTILOS BASE (Desktop) */
+.custom-navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 96%;
+  height: 80px;
+  background-color: #111;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 40px;
+  z-index: 1000;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.brand-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.brand-name {
+  color: #ff0000;
+  font-size: 28px;
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+.brand-tag {
+  color: white;
+  font-size: 12px;
+  letter-spacing: 2px;
+  margin-top: -5px;
+}
+
+.nav-menu {
+  display: flex;
+  gap: 30px;
+}
+
+.nav-link {
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+.nav-link:hover {
+  color: #ff0000;
+}
+
+.nav-social {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.social-icon {
+  color: white;
+  font-size: 20px;
+  transition: color 0.3s;
+}
+
+.social-icon:hover {
+  color: #ff0000;
+}
+
+.reserve-button {
+  background-color: #ff0000;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 30px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.reserve-button:hover {
+  background-color: #cc0000;
+}
+
+
+/* ... (mantén todos tus estilos desktop existentes igual) ... */
+
+/* ==================== */
+/* RESPONSIVE (Móvil) CORREGIDO */
+/* ==================== */
+@media (max-width: 768px) {
+  .custom-navbar {
+    height: 60px;
+    padding: 0 15px;
+  }
+
+  /* Logo más pequeño y centrado */
+  .brand-container {
+    position: absolute;
+    left: calc(35% - 20px);
+    transform: translateX(-50%);
+    width: auto;
+  }
+
+  .brand-name {
+    font-size: 18px;
+    white-space: nowrap; /* Evita salto de línea */
+  }
+
+  .brand-tag {
+    font-size: 9px;
+    margin-top: -2px;
+  }
+
+  /* Ocultar menú normal */
+  .nav-menu {
+    display: none;
+  }
+
+  /* Mostrar menú hamburguesa (CSS-only) */
+  .custom-navbar::before {
+    content: "☰";
+    font-size: 24px;
+    color: white;
+    cursor: pointer;
+    position: absolute;
+    left: 15px;
+    top: 18px;
+  }
+
+  /* Menú desplegable al hacer hover */
+  .custom-navbar:hover .nav-menu {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    background: #111;
+    padding: 15px 0;
+    gap: 0;
+    z-index: 1000;
+  }
+
+  .custom-navbar:hover .nav-link {
+    padding: 12px 20px;
+    border-bottom: 1px solid #333;
+  }
+
+  /* Ajuste para iconos y botón (se mantienen a la derecha) */
+  .nav-social {
+    margin-left: auto; /* Empuja todo a la derecha */
+    gap: 8px;
+  }
+
+  .social-icon {
+    font-size: 14px;
+  }
+
+  .reserve-button {
+    padding: 6px 12px;
+    font-size: 12px;
+    gap: 5px;
+  }
+}
+
+/* Ajustes para móviles muy pequeños */
+@media (max-width: 480px) {
+  .brand-name {
+    font-size: 10px;
+  }
+
+  .social-icon {
+    font-size: 12px;
+  }
+
+  .reserve-button {
+    padding: 5px 10px;
+    font-size: 10px;
+  }
+}
